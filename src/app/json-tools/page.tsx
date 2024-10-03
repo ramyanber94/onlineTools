@@ -20,8 +20,18 @@ export default function JsonTools() {
     }
   };
 
+  const handleValidate = () => {
+    try {
+      JSON.parse(input);
+      setError(''); // Clear error if successful
+    } catch (e) {
+      setError('Invalid JSON');
+      setOutput('');
+    }
+  }
   const handleInputChange = (e: any) => {
     setInput(e.target.value);
+    handleValidate(); // Beautify JSON on every input change
   };
 
   return (
